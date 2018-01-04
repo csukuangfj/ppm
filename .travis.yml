@@ -1,0 +1,85 @@
+# Travis CI for ppm
+#
+# Author: Fangjun Kuang, cuskuangfj <at> gmail <dot> com
+# Date: January 4, 2018
+#
+# To validate this file, go to http://lint.travis-ci.org/
+#
+
+os:
+  - linux
+  - osx
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+matrix:
+  exclude:
+   - os: linux
+     compiler: clang
+
+env:
+  - CXX_FLAGS=-std=c++11
+
+cache: ccache
+before_cache:
+  # print statistics before uploading new cache
+  - ccache --show-stats
+
+# https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.7
+    packages:
+    - g++-4.9
+    - clang-3.7
+      #- liblapack3        # Library of linear algebra routines 3 - shared version
+    - liblapack-dev        # Library of linear algebra routines 3 - static version
+    - build-essential
+    - cmake
+    - git
+    - libgtk2.0-dev
+    - pkg-config
+    - libavcodec-dev
+    - libavformat-dev
+    - libswscale-dev
+    #- python-dev
+    #- python-numpy
+    - libtbb2
+    - libtbb-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libtiff-dev
+    - libjasper-dev
+    - libdc1394-22-dev
+
+notifications:
+  email: false
+
+sudo: false
+
+# refer to https://github.com/google/googletest/blob/master/.travis.yml
+install:
+    - if [ "$CXX" = "g++" ] && [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+    - if [ "$CXX" = "clang++" ] && [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX="clang++-3.7" CC="clang-3.7"; ln -sf /usr/bin/ccache /$HOME/bin/$CXX; ln -sf /usr/bin/ccache /$HOME/bin/$CC; fi
+    - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; brew install ccache; export PATH="/usr/local/opt/ccache/libexec:$PATH"; fi
+      # reset ccache statistics
+    - ccache --zero-stats
+    - echo ${PATH}
+    - echo ${CXX}
+    - ${CXX} --version
+    - ${CXX} -v
+
+    - bash travis/install-gtest.sh
+
+    - bash travis/install-opencv.sh
+
+    - export OpenCV_DIR=$HOME/kfj-software/opencv-install
+
+script:
+    - bash travis/script.sh
