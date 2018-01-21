@@ -53,3 +53,5 @@ and [ppm_st_cmd.cpp][7] for how to use it.
 [3]: https://github.com/opencv/opencv
 [2]: https://www.microsoft.com/en-us/research/publication/patchmatch-stereo-stereo-matching-with-slanted-support-windows/
 [1]: https://github.com/YinlinHu/CPM
+
+[![Analytics](https://ga-beacon.appspot.com/UA-112812838-1/welcome-page)](https://github.com/csukuangfj/ppm)
