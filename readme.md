@@ -8,6 +8,8 @@ This repository contains the source code for my thesis,
 which implements and extends [CPM][1] for motion estimation
 and [PatchMatch Stereo][2] for stereo matching.
 
+You can obtain a copy of the thesis at the address: https://elib.uni-stuttgart.de/handle/11682/9592
+
 The estimation results
 for the standard benchmarks are available
 at: [KITTI-2012][8], [KITTI-2015][9],
