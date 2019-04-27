@@ -5,8 +5,8 @@ mkdir -p $HOME/kfj-software/opencv-install
 mkdir -p /tmp/fangjun
 
 cd /tmp/fangjun
-git clone https://github.com/opencv/opencv.git
-git clone https://github.com/opencv/opencv_contrib.git
+git clone -b 3.4 https://github.com/opencv/opencv.git
+git clone -b 3.4 https://github.com/opencv/opencv_contrib.git
 
 mkdir build
 cd build
