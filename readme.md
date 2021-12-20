@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/csukuangfj/ppm.svg?branch=master)](https://travis-ci.org/csukuangfj/ppm) [![HitCount](http://hits.dwyl.io/csukuangfj/ppm.svg)](http://hits.dwyl.io/csukuangfj/ppm)
+[![Build Status](https://travis-ci.org/csukuangfj/ppm.svg?branch=master)](https://travis-ci.org/csukuangfj/ppm)
 
 
 ## Introduction
